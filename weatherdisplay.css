@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #3fa5b4, #447096);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-size: 400% 400%;
+}
+
+/* Update the container styling */
+.weather-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: clamp(20px, 5vw, 40px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  width: clamp(500px, 90vw, 450px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  margin: 1rem;
+}
+
+.weather-container:hover {
+  transform: translateY(-5px);
+}
+
+/* Update location styling */
+.location {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.city {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Update temperature styling */
+.temperature {
+  font-size: 5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.condition {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #f0eaff;
+}
+
+/* Update weather icon */
+.weather-icon {
+  width: 120px;
+  height: 120px;
+  margin: 1.5rem 0;
+  filter: drop-shadow(2px 2px 8px rgba(255, 255, 255, 0.2));
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.weather-icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 12px rgba(255, 255, 255, 0.4));
+  opacity: 1;
+}
+
+/* Update details section */
+.details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.detail-box {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.detail-box:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Adjust the text sizing in detail boxes */
+.detail-box p:first-child {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #ffffff;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+}
+
+.detail-box p:last-child {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .weather-container {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .temperature {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  .city {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .details {
+    gap: clamp(0.5rem, 2vw, 1rem);
+    padding: 0 0.5rem;
+  }
+
+  .detail-box {
+    padding: 1rem;
+    height: 80px;
+  }
+
+  .detail-box p:first-child {
+    font-size: 1.2rem;
+  }
+
+  .detail-box p:last-child {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .weather-container {
+    width: clamp(350px, 80vw, 450px);
+    padding: 2rem;
+  }
+}
+
+/* Add smooth scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

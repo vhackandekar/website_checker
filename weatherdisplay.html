@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="weatherdisplay.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body id="weatherBody">
+  <div class="weather-container">
+    <div class="location">📍 Location</div>
+    <div class="city" id="weatherCity">Kedarnath</div>
+    <div class="temperature" id="weatherTemp">17.48°C</div>
+    <img src="./Images/cloudy.png" alt="Weather Icon" class="weather-icon" id="weatherIcon" />
+    <div class="condition" id="weatherCondition">Scattered Clouds</div>
+    <div class="details">
+      <div class="detail-box">
+        <p>30%</p>
+        <p>Precipitation</p>
+      </div>
+      <div class="detail-box">
+        <p id="weatherHumidity">20%</p>
+        <p>Humidity</p>
+      </div>
+      <div class="detail-box">
+        <p id="weatherPressure"></p>
+        <p>pressure</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const city = params.get('city') || "Unknown";
+    const temp = params.get('temp') || "N/A";
+    const condition = params.get('condition') || "N/A";
+    const pressure = params.get('pressure') || "N/A";
+    const humidity = params.get('humidity') || "N/A";
+
+    // Update content
+    document.getElementById('weatherCity').textContent = city;
+    document.getElementById('weatherCondition').textContent = condition;
+    document.getElementById('weatherTemp').textContent = `${temp}°C`;
+    document.getElementById('weatherPressure').textContent = `${pressure}hpa `;
+    document.getElementById('weatherHumidity').textContent = `${humidity}%`;
+
+    // Set icon dynamically
+    const icon = document.getElementById('weatherIcon');
+    const lower = condition.toLowerCase();
+
+    if (lower.includes('rain')) {
+      
+      icon.src = './Images/rain.png';
+    } else if (lower.includes('sun') || lower.includes('clear')) {
+      icon.src = './Images/sunny.png';
+    } else if (lower.includes('cloud')) {
+      icon.src = './Images/cloudy.png';
+    } else {
+      icon.src = './Images/clear_sky.png';
+    }
+
+    icon.onerror = function () {
+      console.error('Error loading image:', this.src);
+    };
+  </script>
+</body>
+</html>

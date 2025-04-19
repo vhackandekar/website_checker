@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🌦️ Weather Checker</h1>
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <button onclick="getWeather()">Get Weather</button>
+  </div>
+
+  <script>
+    async function getWeather() {
+      const city = document.getElementById('cityInput').value;
+  
+      fetch('/getweather', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ city })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Fix URL construction with proper parameter separation
+        const url = `weatherdisplay.html?city=${encodeURIComponent(data.city)}&temp=${data.temp}&condition=${encodeURIComponent(data.description)}&pressure=${data.pressure}&humidity=${data.humidity}`;
+        window.location.href = url;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to fetch weather data');
+      });
+    }
+  </script>
+      
+</body>
+</html>
